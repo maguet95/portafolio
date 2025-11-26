@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Formulario Portafolio - Arquitecta</title>
+  <title>Cuestionario — Arquitecta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <!-- JSZip & FileSaver via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
@@ -12,86 +13,109 @@
 <body>
   <div class="container">
     <header>
-      <h1>Formulario para Portafolio — Arquitecta</h1>
-      <p>Rellena los campos y utiliza <strong>Generar ZIP</strong> para descargar tu información y adjuntos.</p>
+      <div>
+        <nav class="breadcrumb"><a href="../index.html">Portafolios</a> › <strong>Cuestionario</strong></nav>
+        <h1>Cuestionario para creación de Portafolio — Arquitecta</h1>
+        <p>Completa este cuestionario para recopilar la información necesaria. Al final podrás descargar un ZIP con tus respuestas y los archivos adjuntos.</p>
+      </div>
+      <div aria-hidden="true">
+        <!-- espacio para logo u opciones futuras -->
+      </div>
     </header>
 
     <form id="portfolioForm">
       <div id="status" class="status" role="status" aria-live="polite"></div>
+
       <section>
         <h2>1. Identidad Profesional</h2>
-        <label>Nombre completo<input name="nombre" type="text" required></label>
-        <label>Nombre profesional preferido<input name="nombre_profesional" type="text"></label>
-        <label>Cargo o especialidad principal<input name="cargo" type="text"></label>
-        <label>Biografía corta<textarea name="bio"></textarea></label>
-        <label>Filosofía o visión de diseño<textarea name="filosofia"></textarea></label>
-        <label>Estilos arquitectónicos preferidos<input name="estilos" type="text"></label>
-        <label>Valores o principios del trabajo<textarea name="valores"></textarea></label>
-        <label>Foto profesional (adjuntar)<input name="foto" type="file" accept="image/*"></label>
+        <div class="form-grid">
+          <label>Nombre completo<input name="nombre" type="text" required placeholder="Ej: María Pérez"></label>
+          <label>Nombre profesional preferido<input name="nombre_profesional" type="text" placeholder="Ej: M. Pérez Arquitecta"></label>
+          <label>Cargo o especialidad principal<input name="cargo" type="text" placeholder="Ej: Arquitecta senior — Interiores"></label>
+          <label class="full">Biografía corta<textarea name="bio" placeholder="3–5 líneas que resuman tu perfil"></textarea></label>
+          <label class="full">Filosofía o visión de diseño<textarea name="filosofia" placeholder="Describe tu enfoque de diseño"></textarea></label>
+          <label>Estilos arquitectónicos preferidos<input name="estilos" type="text" placeholder="Ej: Minimalista, contemporáneo"></label>
+          <label>Valores o principios del trabajo<textarea name="valores" placeholder="Lista tus valores profesionales"></textarea></label>
+          <label>Foto profesional (adjuntar)<input name="foto" type="file" accept="image/*"><div class="file-note">Adjunta una foto profesional (JPG/PNG). Máx 15MB.</div></label>
+        </div>
       </section>
 
       <section>
         <h2>2. Objetivo del Portafolio</h2>
-        <label>Objetivo principal<input name="objetivo" type="text"></label>
-        <label>Empresas o estudios a los que apunta<textarea name="empresas"></textarea></label>
-        <label>Tipo de proyectos que quiere atraer<textarea name="proyectos_objetivo"></textarea></label>
-        <label>Tono deseado del portafolio<input name="tono" type="text"></label>
-        <label>Ejemplos o referencias (links)<textarea name="referencias"></textarea></label>
+        <div class="form-grid">
+          <label>Objetivo principal<input name="objetivo" type="text" placeholder="Empleo, captar clientes, marca personal"></label>
+          <label class="full">Empresas o estudios a los que apunta<textarea name="empresas" placeholder="Nombres o links"></textarea></label>
+          <label class="full">Tipo de proyectos que quiere atraer<textarea name="proyectos_objetivo" placeholder="Residencial, comercial, concursos..."></textarea></label>
+          <label>Tono deseado<input name="tono" type="text" placeholder="Técnico, artístico, elegante..."></label>
+          <label class="full">Ejemplos o referencias (links)<textarea name="referencias" placeholder="Links y qué te gusta de cada uno"></textarea></label>
+        </div>
       </section>
 
       <section>
         <h2>3. Formación Académica</h2>
-        <label>Títulos obtenidos<textarea name="titulos"></textarea></label>
-        <label>Especialidades<input name="especialidades" type="text"></label>
-        <label>Cursos adicionales<textarea name="cursos"></textarea></label>
-        <label>Certificaciones<textarea name="certificaciones"></textarea></label>
+        <div class="form-grid">
+          <label class="full">Títulos obtenidos<textarea name="titulos" placeholder="Lista: Título — Institución — Año"></textarea></label>
+          <label>Especialidades<input name="especialidades" type="text" placeholder="Ej: Urbanismo"></label>
+          <label>Cursos adicionales<textarea name="cursos" placeholder="Cursos, diplomados, talleres"></textarea></label>
+          <label>Certificaciones<textarea name="certificaciones" placeholder="LEED, BIM, etc."></textarea></label>
+        </div>
       </section>
 
       <section>
         <h2>4. Experiencia Profesional</h2>
-        <p>Para cada experiencia, separa con una línea nueva o punto y coma.</p>
-        <label>Experiencias<textarea name="experiencias" placeholder="Nombre - Cargo - Período - Responsabilidades - Logros"></textarea></label>
+        <div class="form-grid">
+          <label class="full">Experiencias<textarea name="experiencias" rows="4" placeholder="Formato sugerido: Empresa - Cargo - Período - Responsabilidades - Logros"></textarea></label>
+        </div>
       </section>
 
       <section>
         <h2>5. Habilidades y Herramientas Técnicas</h2>
-        <label>Software (indica nivel)<textarea name="software"></textarea></label>
-        <label>Habilidades técnicas<textarea name="habilidades_tecnicas"></textarea></label>
-        <label>Soft skills<textarea name="soft_skills"></textarea></label>
+        <div class="form-grid">
+          <label class="full">Software (indica nivel)<textarea name="software" placeholder="AutoCAD: Avanzado; Revit: Intermedio"></textarea></label>
+          <label>Habilidades técnicas<textarea name="habilidades_tecnicas" placeholder="Modelado 3D, renders, dirección de obra..."></textarea></label>
+          <label>Soft skills<textarea name="soft_skills" placeholder="Liderazgo, comunicación..."></textarea></label>
+        </div>
       </section>
 
       <section>
         <h2>6. Proyectos para el Portafolio</h2>
-        <p>Rellena una ficha por proyecto. Usa separadores como "---" entre proyectos.</p>
-        <label>Proyectos (nombre, año, cliente, ubicación, tipo, rol, problema, concepto, proceso, solución, impacto, software, créditos)<textarea name="proyectos" rows="6"></textarea></label>
-        <label>Adjuntar imágenes/renders/planos (varios)<input name="proyecto_files" type="file" multiple accept="image/*,.pdf,.zip"></label>
+        <div class="form-grid">
+          <label class="full">Proyectos (ficha por proyecto)<textarea name="proyectos" rows="5" placeholder="Nombre - Año - Cliente - Ubicación - Tipo - Rol - Concepto - Proceso - Solución - Impacto"></textarea></label>
+          <label class="full">Adjuntar imágenes / renders / planos (varios)<input name="proyecto_files" type="file" multiple accept="image/*,.pdf,.zip"><div class="file-note">Puedes adjuntar varias imágenes o un ZIP con los archivos del proyecto.</div></label>
+        </div>
       </section>
 
       <section>
         <h2>7. Estilo Visual Deseado</h2>
-        <label>Paleta de colores<input name="paleta" type="text" placeholder="#FFFFFF, #000000"></label>
-        <label>Estilo visual preferido<input name="estilo_visual" type="text"></label>
-        <label>Tipografías sugeridas<input name="tipografias" type="text"></label>
-        <label>Formatos deseados (PDF, Web, Behance... )<input name="formatos" type="text"></label>
+        <div class="form-grid">
+          <label>Paleta de colores<input name="paleta" type="text" placeholder="#FFFFFF, #000000"></label>
+          <label>Estilo visual preferido<input name="estilo_visual" type="text" placeholder="Minimalista, editorial..."></label>
+          <label>Tipografías sugeridas<input name="tipografias" type="text"></label>
+          <label>Formatos deseados<input name="formatos" type="text" placeholder="PDF, Web, Behance..."></label>
+        </div>
       </section>
 
       <section>
         <h2>8. Personalidad Profesional</h2>
-        <label>Frase personal o lema<input name="lema" type="text"></label>
-        <label>¿Qué te hace diferente?<textarea name="diferenciador"></textarea></label>
-        <label>Metodología de trabajo<textarea name="metodologia"></textarea></label>
-        <label>Testimonios<textarea name="testimonios"></textarea></label>
+        <div class="form-grid">
+          <label>Frase personal o lema<input name="lema" type="text"></label>
+          <label class="full">¿Qué te hace diferente?<textarea name="diferenciador"></textarea></label>
+          <label class="full">Metodología de trabajo<textarea name="metodologia"></textarea></label>
+          <label class="full">Testimonios<textarea name="testimonios"></textarea></label>
+        </div>
       </section>
 
       <section>
         <h2>9. Elementos Extras</h2>
-        <label>Redes profesionales (LinkedIn, Instagram, Behance)<textarea name="redes"></textarea></label>
-        <label>Logo personal (adjuntar)<input name="logo" type="file" accept="image/*,.svg"></label>
-        <label>Firma digital (adjuntar)<input name="firma" type="file" accept="image/*,.pdf"></label>
-        <label>Publicaciones, premios o distinciones<textarea name="distinciones"></textarea></label>
-        <label>Disponibilidad laboral<input name="disponibilidad" type="text"></label>
-        <label>Datos de contacto<textarea name="contacto"></textarea></label>
-        <label>Preferencias para el diseño final<textarea name="preferencias_diseno"></textarea></label>
+        <div class="form-grid">
+          <label class="full">Redes profesionales y perfiles<textarea name="redes" placeholder="LinkedIn, Instagram, Behance, web"></textarea></label>
+          <label>Logo personal (adjuntar)<input name="logo" type="file" accept="image/*,.svg"></label>
+          <label>Firma digital (adjuntar)<input name="firma" type="file" accept="image/*,.pdf"></label>
+          <label class="full">Publicaciones, premios o distinciones<textarea name="distinciones"></textarea></label>
+          <label>Disponibilidad laboral<input name="disponibilidad" type="text" placeholder="Inmediata, con aviso..."></label>
+          <label class="full">Datos de contacto<textarea name="contacto" placeholder="Teléfono, email, dirección (opcional)"></textarea></label>
+          <label class="full">Preferencias para el diseño final<textarea name="preferencias_diseno"></textarea></label>
+        </div>
       </section>
 
       <div class="actions">
@@ -101,7 +125,7 @@
     </form>
 
     <footer>
-      <p>Por favor, llena este formulario con la mayor precisión posible. Luego enviaré esta información a un sistema que generará tu portafolio profesional personalizado.</p>
+      <p>Por favor, rellena este formulario con la mayor precisión posible. Luego enviaré esta información a un sistema que generará tu portafolio profesional personalizado.</p>
     </footer>
   </div>
 

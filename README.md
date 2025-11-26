@@ -1,25 +1,26 @@
 # Portafolios
 
-Este repositorio contiene formularios y recursos para generar portafolios profesionales.
+Repositorio con cuestionarios para recopilar información de arquitectas y arquitectos para la creación de portafolios profesionales.
 
-Estructura principal:
+Estructura:
 
-- `Valeria Arosemena/` — carpeta con el formulario web y recursos para la arquitecta Valeria Arosemena.
+- `index.html` — Página principal (Sección: Cuestionarios).
+- `Valeria Arosemena/` — Cuestionario de ejemplo (formulario web que genera un ZIP con respuestas y adjuntos en el navegador).
 
-Instrucciones rápidas para publicar en GitHub Pages:
+Cómo usar localmente:
 
-1. Crea un repositorio en GitHub llamado `Portafolios`.
-2. En tu máquina local, sitúate en la carpeta `Portafolios` y ejecuta:
+1. Abrir `index.html` en el navegador (doble clic o `File -> Open`).
+2. Ir a la sección `Cuestionarios` y abrir el cuestionario deseado.
+3. Rellenar campos y adjuntar archivos. Pulsar **Generar y descargar ZIP** para obtener un archivo con `formulario_portafolio_arquitecta.md` y los adjuntos.
 
-```bash
-git init
-git add .
-git commit -m "Initial commit: Portafolios repo with Valeria Arosemena site"
-git branch -M main
-git remote add origin git@github.com:TU_USUARIO/Portafolios.git
-git push -u origin main
-```
+Despliegue en GitHub Pages:
 
-3. En GitHub, ve a Settings → Pages y configura la publicación desde la rama `main` (root). En unos minutos tu sitio estará disponible en `https://TU_USUARIO.github.io/Portafolios/Valeria%20Arosemena/`.
+1. Sube este repo a GitHub (ya creado en tu cuenta como `maguet95/Portafolios`).
+2. En GitHub, ve a Settings → Pages y habilita la publicación desde la rama principal (`master` o `main`) en la carpeta root.
+3. El sitio estará disponible en `https://<TU_USUARIO>.github.io/Portafolios/`.
 
-Nota: Si prefieres que publique yo mismo (opcional), necesitaré acceso al repositorio o que me des permiso para hacer push.
+Notas:
+
+- El flujo actual genera y descarga un ZIP en el navegador; no hay almacenamiento remoto.
+- Si más adelante deseas recibir envíos y adjuntos en un servidor, puedo integrar Firebase o funciones serverless.
+
