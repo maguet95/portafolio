@@ -5,7 +5,7 @@ Repositorio con cuestionarios para recopilar información de arquitectas y arqui
 Estructura:
 
 - `index.html` — Página principal (Sección: Cuestionarios).
-- `Valeria Arosemena/` — Cuestionario de ejemplo (formulario web que genera un ZIP con respuestas y adjuntos en el navegador).
+-- `formularios/plantilla_arquitecta/` — Cuestionario de ejemplo (formulario web que genera un ZIP con respuestas y adjuntos en el navegador).
 
 Cómo usar localmente:
 
