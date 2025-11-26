@@ -81,7 +81,8 @@
         <h2>6. Proyectos para el Portafolio</h2>
         <div class="form-grid">
           <label class="full">Proyectos (ficha por proyecto)<textarea name="proyectos" rows="5" placeholder="Nombre - Año - Cliente - Ubicación - Tipo - Rol - Concepto - Proceso - Solución - Impacto"></textarea></label>
-          <label class="full">Adjuntar imágenes / renders / planos (varios)<input name="proyecto_files" type="file" multiple accept="image/*,.pdf,.zip"><div class="file-note">Puedes adjuntar varias imágenes o un ZIP con los archivos del proyecto.</div></label>
+          <label class="full">Adjuntar imágenes / renders / planos (varios)<input id="proyecto_files" name="proyecto_files" type="file" multiple accept="image/*,.pdf,.zip"><div class="file-note">Puedes adjuntar varias imágenes o un ZIP con los archivos del proyecto.</div></label>
+          <div id="attachmentsPreview" class="full"></div>
         </div>
       </section>
 
@@ -123,6 +124,18 @@
         <button type="reset">Limpiar</button>
       </div>
     </form>
+
+    <!-- Modal de confirmación -->
+    <div id="confirmModal" class="modal" aria-hidden="true">
+      <div class="modal-content">
+        <h3>Confirmar envío</h3>
+        <div id="modalSummary"></div>
+        <div class="modal-actions">
+          <button id="modalCancel" class="btn-secondary">Cancelar</button>
+          <button id="modalConfirm" class="btn-primary">Confirmar y generar ZIP</button>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <p>Por favor, rellena este formulario con la mayor precisión posible. Luego enviaré esta información a un sistema que generará tu portafolio profesional personalizado.</p>
