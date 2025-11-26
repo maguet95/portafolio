@@ -63,9 +63,38 @@
 
       <section>
         <h2>4. Experiencia Profesional</h2>
-        <div class="form-grid">
-          <label class="full">Experiencias<textarea name="experiencias" rows="4" placeholder="Formato sugerido: Empresa - Cargo - Período - Responsabilidades - Logros"></textarea></label>
+        <p>Agrega cada experiencia laboral de forma individual. Puedes añadir tantas como necesites.</p>
+
+        <div class="experiences-actions">
+          <button type="button" id="addExperienceBtn">+ Añadir experiencia</button>
+          <small class="muted">Documenta cada puesto o trabajo relevante.</small>
         </div>
+
+        <div id="experiencesContainer"></div>
+
+        <!-- Plantilla de experiencia (oculta) -->
+        <template id="experienceTemplate">
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3 class="experience-title">Experiencia</h3>
+              <div class="experience-actions">
+                <button type="button" class="removeExperienceBtn">Eliminar</button>
+              </div>
+            </div>
+
+            <div class="experience-grid">
+              <label>Empresa / Estudio<input name="exp_company" type="text" placeholder="Nombre de la empresa"></label>
+              <label>Cargo<input name="exp_position" type="text" placeholder="Arquitecto senior, diseñador..."></label>
+              <label>Fecha inicio<input name="exp_start" type="text" placeholder="Ej: Enero 2020"></label>
+              <label>Fecha fin<input name="exp_end" type="text" placeholder="Ej: Diciembre 2022 o Actual"></label>
+            </div>
+
+            <label>Ubicación<input name="exp_location" type="text" placeholder="Ciudad, País"></label>
+            <label>Responsabilidades principales<textarea name="exp_responsibilities" rows="2" placeholder="Describe tus funciones y tareas principales"></textarea></label>
+            <label>Logros destacados<textarea name="exp_achievements" rows="2" placeholder="Proyectos importantes, reconocimientos, resultados medibles"></textarea></label>
+            <label>Tecnologías / Software utilizado<input name="exp_tools" type="text" placeholder="Revit, AutoCAD, Sketch..."></label>
+          </div>
+        </template>
       </section>
 
       <section>
@@ -79,11 +108,48 @@
 
       <section>
         <h2>6. Proyectos para el Portafolio</h2>
-        <div class="form-grid">
-          <label class="full">Proyectos (ficha por proyecto)<textarea name="proyectos" rows="5" placeholder="Nombre - Año - Cliente - Ubicación - Tipo - Rol - Concepto - Proceso - Solución - Impacto"></textarea></label>
-          <label class="full">Adjuntar imágenes / renders / planos (varios)<input id="proyecto_files" name="proyecto_files" type="file" multiple accept="image/*,.pdf,.zip"><div class="file-note">Puedes adjuntar varias imágenes o un ZIP con los archivos del proyecto.</div></label>
-          <div id="attachmentsPreview" class="full"></div>
+        <p>Agrega proyectos uno por uno. Cada proyecto tiene su ficha con campos claros y un archivo de adjuntos propio (imágenes, planos, PDF).</p>
+
+        <div class="projects-actions">
+          <button type="button" id="addProjectBtn">+ Añadir proyecto</button>
+          <small class="muted">Usa un proyecto por experiencia; puedes agregar varios.</small>
         </div>
+
+        <div id="projectsContainer"></div>
+
+        <!-- Plantilla de proyecto (oculta) -->
+        <template id="projectTemplate">
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="project-title">Proyecto</h3>
+              <div class="project-actions">
+                <button type="button" class="removeProjectBtn">Eliminar</button>
+              </div>
+            </div>
+
+            <div class="project-grid">
+              <label>Nombre del proyecto<input name="project_name" type="text" placeholder="Nombre del proyecto"></label>
+              <label>Año<input name="project_year" type="text" placeholder="2024"></label>
+              <label>Cliente<input name="project_client" type="text" placeholder="Cliente / institución"></label>
+              <label>Ubicación<input name="project_location" type="text" placeholder="Ciudad, País"></label>
+              <label>Tipo de proyecto<input name="project_type" type="text" placeholder="Residencial / Comercial / Urbano"></label>
+              <label>Rol en el proyecto<input name="project_role" type="text" placeholder="Líder de proyecto / Colaborador"></label>
+            </div>
+
+            <label>Problema / Reto<textarea name="project_problem" rows="2" placeholder="Describe el reto que debía resolver el proyecto"></textarea></label>
+            <label>Concepto / Idea principal<textarea name="project_concept" rows="2" placeholder="Idea central del proyecto"></textarea></label>
+            <label>Proceso (breve)<textarea name="project_process" rows="2" placeholder="Cómo se trabajó el proyecto"></textarea></label>
+            <label>Solución / Resultado<textarea name="project_solution" rows="2" placeholder="Qué se entregó y cómo resolvió el reto"></textarea></label>
+            <label>Impacto / Resultados<textarea name="project_impact" rows="2" placeholder="Impacto medible o cualitativo"></textarea></label>
+            <label>Software y herramientas<input name="project_software" type="text" placeholder="Revit, AutoCAD, Rhino..."></label>
+            <label>Créditos y colaboradores<textarea name="project_credits" rows="2" placeholder="Equipo, colaboradores, fotografías"></textarea></label>
+
+            <label>Adjuntar archivos del proyecto (imágenes, planos, PDF)<input name="project_files" type="file" multiple accept="image/*,.pdf,.zip"></label>
+          </div>
+        </template>
+
+        <div id="attachmentsPreview" class="preview"></div>
+        <div id="fileCount" class="file-count"></div>
       </section>
 
       <section>
