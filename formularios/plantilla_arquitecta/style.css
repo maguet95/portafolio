@@ -19,10 +19,46 @@ section h2{font-size:16px;margin:0 0 12px}
 label{display:block;margin:6px 0;color:#111827;font-size:14px}
 input[type=text], textarea{width:100%;padding:10px;border:1px solid #e6e9ef;border-radius:8px;background:#fff}
 input[type=file]{display:block;margin-top:6px}
+input.invalid, textarea.invalid, select.invalid{border-color:#ef4444;background:#fef2f2}
+input.invalid:focus, textarea.invalid:focus, select.invalid:focus{outline:2px solid #ef4444;outline-offset:2px}
 .actions{display:flex;gap:12px;margin-top:18px}
 button{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
 button[type=reset]{background:#eef2f3;color:var(--accent-2)}
 footer{margin-top:20px;color:var(--muted);font-size:13px}
+
+/* Progress indicator */
+.progress-container{margin:24px 0;padding:20px 0;border-bottom:1px solid #eef2f6}
+.progress-bar{display:flex;align-items:center;justify-content:space-between;max-width:800px;margin:0 auto}
+.progress-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;position:relative}
+.step-number{width:40px;height:40px;border-radius:50%;border:2px solid #e6e9ef;background:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--muted);transition:all 0.3s;z-index:2}
+.progress-step.active .step-number{background:var(--accent);color:#fff;border-color:var(--accent)}
+.progress-step.completed .step-number{background:#10b981;color:#fff;border-color:#10b981}
+.step-label{font-size:13px;font-weight:500;color:var(--muted);text-align:center;max-width:120px}
+.progress-step.active .step-label{color:var(--accent);font-weight:600}
+.progress-step.completed .step-label{color:#10b981}
+.progress-line{height:2px;background:#e6e9ef;flex:1;margin:0 -10px;margin-top:-25px}
+.progress-step.completed ~ .progress-line{background:#10b981}
+
+/* Form steps */
+.form-step{display:none;animation:fadeIn 0.4s ease-in}
+.form-step.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.step-title{font-size:20px;font-weight:700;color:var(--accent-2);margin:20px 0 8px;padding-top:10px}
+.step-description{color:var(--muted);font-size:14px;margin-bottom:20px;padding:12px;background:#f0f9ff;border-left:3px solid var(--accent);border-radius:6px}
+
+/* Step navigation */
+.step-navigation{display:flex;justify-content:space-between;align-items:center;margin:30px 0;padding:20px 0;border-top:1px solid #eef2f6}
+.btn-prev, .btn-next{background:var(--accent);color:#fff;padding:10px 20px;border-radius:8px;border:0;cursor:pointer;font-weight:600;transition:all 0.2s}
+.btn-prev:hover, .btn-next:hover{background:#0d5f57;transform:translateY(-1px)}
+.btn-prev:disabled{background:#d1d5db;cursor:not-allowed;transform:none}
+.step-indicator{font-size:13px;color:var(--muted);font-weight:500}
+
+@media (max-width:768px){
+  .progress-bar{padding:0 10px}
+  .step-label{font-size:11px;max-width:80px}
+  .step-number{width:35px;height:35px;font-size:14px}
+  .progress-line{margin:0 -5px;margin-top:-22px}
+}
 
 /* Status & responsiveness */
 .status{padding:10px;border-radius:10px;background:#ecfeff;color:var(--accent-2);margin-bottom:12px;display:none;border:1px solid rgba(15,118,110,0.08)}

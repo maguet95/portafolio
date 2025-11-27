@@ -25,6 +25,117 @@ document.addEventListener('DOMContentLoaded', function () {
   const MAX_FILE_COUNT = 60;
   const MAX_FILES_PER_PROJECT = 8;
 
+  // Multi-step form navigation
+  let currentStep = 1;
+  const totalSteps = 3;
+  const formSteps = document.querySelectorAll('.form-step');
+  const progressSteps = document.querySelectorAll('.progress-step');
+  const prevButtons = document.querySelectorAll('.btn-prev');
+  const nextButtons = document.querySelectorAll('.btn-next');
+
+  function updateStepDisplay(){
+    // Update form steps
+    formSteps.forEach(step => {
+      step.classList.remove('active');
+      if(parseInt(step.dataset.step) === currentStep){
+        step.classList.add('active');
+      }
+    });
+
+    // Update progress indicator
+    progressSteps.forEach(step => {
+      const stepNum = parseInt(step.dataset.step);
+      step.classList.remove('active', 'completed');
+      if(stepNum === currentStep){
+        step.classList.add('active');
+      } else if(stepNum < currentStep){
+        step.classList.add('completed');
+      }
+    });
+
+    // Scroll to top smoothly
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
+    // Save progress to localStorage
+    localStorage.setItem('portfolioFormStep', currentStep);
+  }
+
+  function validateStep(step){
+    const currentStepEl = document.querySelector(`.form-step[data-step="${step}"]`);
+    if(!currentStepEl) return true;
+
+    const requiredInputs = currentStepEl.querySelectorAll('[required]');
+    let isValid = true;
+    let firstInvalid = null;
+
+    requiredInputs.forEach(input => {
+      // Skip validation for checkbox groups (handle separately)
+      if(input.type === 'checkbox' && input.name === 'objetivo_portafolio'){
+        return;
+      }
+
+      if(input.type === 'checkbox'){
+        if(!input.checked){
+          input.classList.add('invalid');
+          isValid = false;
+          if(!firstInvalid) firstInvalid = input;
+        } else {
+          input.classList.remove('invalid');
+        }
+      } else if(!input.value.trim()){
+        input.classList.add('invalid');
+        isValid = false;
+        if(!firstInvalid) firstInvalid = input;
+      } else {
+        input.classList.remove('invalid');
+      }
+    });
+
+    if(!isValid && firstInvalid){
+      firstInvalid.scrollIntoView({behavior: 'smooth', block: 'center'});
+      firstInvalid.focus();
+      showStatus('Por favor, completa todos los campos requeridos antes de continuar.');
+      setTimeout(hideStatus, 4000);
+    }
+
+    return isValid;
+  }
+
+  function goToStep(step){
+    if(step < 1 || step > totalSteps) return;
+    
+    // Validate current step before moving forward
+    if(step > currentStep && !validateStep(currentStep)){
+      return;
+    }
+
+    currentStep = step;
+    updateStepDisplay();
+  }
+
+  // Event listeners for navigation buttons
+  prevButtons.forEach(btn => {
+    btn.addEventListener('click', () => goToStep(currentStep - 1));
+  });
+
+  nextButtons.forEach(btn => {
+    btn.addEventListener('click', () => goToStep(currentStep + 1));
+  });
+
+  // Restore saved step on page load
+  const savedStep = localStorage.getItem('portfolioFormStep');
+  if(savedStep){
+    currentStep = parseInt(savedStep);
+    updateStepDisplay();
+  }
+
+  // Clear saved progress on form reset
+  form.addEventListener('reset', () => {
+    localStorage.removeItem('portfolioFormStep');
+    currentStep = 1;
+    updateStepDisplay();
+  });
+
   function showStatus(msg){
     if(!statusEl) return;
     statusEl.textContent = msg;

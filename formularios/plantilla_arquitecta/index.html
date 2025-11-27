@@ -25,11 +25,36 @@
       </div>
     </header>
 
+    <!-- Indicador de progreso -->
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-step active" data-step="1">
+          <div class="step-number">1</div>
+          <div class="step-label">Identidad & Objetivos</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="2">
+          <div class="step-number">2</div>
+          <div class="step-label">Proyectos & Evidencias</div>
+        </div>
+        <div class="progress-line"></div>
+        <div class="progress-step" data-step="3">
+          <div class="step-number">3</div>
+          <div class="step-label">Preferencias & Envío</div>
+        </div>
+      </div>
+    </div>
+
     <form id="portfolioForm">
       <div id="status" class="status" role="status" aria-live="polite"></div>
 
-      <section>
-        <h2>1. Identidad Profesional</h2>
+      <!-- PASO 1: Identidad & Objetivos -->
+      <div class="form-step active" data-step="1">
+        <h2 class="step-title">Paso 1: Identidad & Objetivos</h2>
+        <p class="step-description">Información básica sobre tu identidad profesional, formación y objetivos.</p>
+
+        <section>
+          <h2>1. Identidad Profesional</h2>
         <div class="form-grid">
           <label>Nombre completo<input name="nombre" type="text" required placeholder="Ej: María Pérez"></label>
           <label>Nombre profesional preferido<input name="nombre_profesional" type="text" placeholder="Ej: M. Pérez Arquitecta"></label>
@@ -97,8 +122,21 @@
         </div>
       </section>
 
-      <section>
-        <h2>4. Experiencia Profesional</h2>
+        <!-- Botones de navegación Paso 1 -->
+        <div class="step-navigation">
+          <button type="button" class="btn-prev" disabled>« Anterior</button>
+          <button type="button" class="btn-next">Siguiente »</button>
+        </div>
+      </div>
+      <!-- FIN PASO 1 -->
+
+      <!-- PASO 2: Proyectos & Evidencias -->
+      <div class="form-step" data-step="2">
+        <h2 class="step-title">Paso 2: Proyectos & Evidencias</h2>
+        <p class="step-description">Experiencia laboral, habilidades técnicas y portafolio de proyectos.</p>
+
+        <section>
+          <h2>4. Experiencia Profesional</h2>
         <p>Agrega cada experiencia laboral de forma individual. Puedes añadir tantas como necesites.</p>
 
         <div class="experiences-actions">
@@ -196,8 +234,21 @@
         <div id="fileCount" class="file-count"></div>
       </section>
 
-      <section>
-        <h2>7. Estilo Visual Deseado</h2>
+        <!-- Botones de navegación Paso 2 -->
+        <div class="step-navigation">
+          <button type="button" class="btn-prev">« Anterior</button>
+          <button type="button" class="btn-next">Siguiente »</button>
+        </div>
+      </div>
+      <!-- FIN PASO 2 -->
+
+      <!-- PASO 3: Preferencias & Envío -->
+      <div class="form-step" data-step="3">
+        <h2 class="step-title">Paso 3: Preferencias & Envío</h2>
+        <p class="step-description">Estilo visual, preferencias de comunicación y finalización del formulario.</p>
+
+        <section>
+          <h2>7. Estilo Visual Deseado</h2>
         <div class="form-grid">
           <label>Paleta de colores<input name="paleta" type="text" placeholder="#FFFFFF, #000000"></label>
           <label>Estilo visual preferido<input name="estilo_visual" type="text" placeholder="Minimalista, editorial..."></label>
@@ -271,6 +322,14 @@
           <label>Fecha *<input type="date" name="firma_fecha" required></label>
         </div>
       </section>
+
+        <!-- Botones de navegación Paso 3 -->
+        <div class="step-navigation">
+          <button type="button" class="btn-prev">« Anterior</button>
+          <span class="step-indicator">Último paso</span>
+        </div>
+      </div>
+      <!-- FIN PASO 3 -->
 
       <div class="actions">
         <button type="button" id="downloadPdfBtn" class="btn-secondary">📄 Descargar resumen PDF</button>
